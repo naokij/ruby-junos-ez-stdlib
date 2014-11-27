@@ -26,6 +26,7 @@ class Junos::Ez::Vlans::Provider::VLAN < Junos::Ez::Vlans::Provider
     as_hash[:vlan_id] = as_xml.xpath('vlan-id').text.to_i
     xml_when_item(as_xml.xpath('description')){ |i| as_hash[:description] = i.text }    
     xml_when_item(as_xml.xpath('no-mac-learning')){ as_hash[:no_mac_learning] = :enable }
+    xml_when_item(as_xml.xpath('vlan-l3-interface')){ |i| as_hash[:l3_interface] = i.text } 
     
     # get a brief list of the interfaces on this vlan
     got = @ndev.rpc.get_vlan_information( :vlan_name => @name || as_xml.xpath('name').text )

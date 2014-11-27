@@ -7,6 +7,7 @@ module Junos::Ez::Vlans
      :description,              # String, description
      :no_mac_learning,          # [ true | nil ] - used to disable MAC-address learning
      :interfaces,               # READ-ONLY, array of bound interface names
+     :l3_interface,             # string, l3 interface name for vlan
   ]  
 
   def self.Provider( ndev, varsym )        
